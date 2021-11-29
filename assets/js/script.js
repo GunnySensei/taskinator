@@ -7,6 +7,13 @@ var taskFormHandler = function(event) {
     //create variable that accesses the input of task-name [] = selects an HTML element
     var taskNameInput = document.querySelector("input[name='task-name']").value;
     var taskTypeInput = document.querySelector("select[name='task-type']").value;
+
+    //check if input contains empty strings
+    if(!taskNameInput || !taskTypeInput) {
+        alert("You need to fill out the task form!");
+        return false;
+    }
+
     //package data as an object
     var taskDataObj = {
         name: taskNameInput,
@@ -15,6 +22,8 @@ var taskFormHandler = function(event) {
 
     //send as an argument to createTaskEl
     createTaskEl(taskDataObj);
+
+    formEl.reset();
 }
 
 var createTaskEl = function(taskDataObj) {
